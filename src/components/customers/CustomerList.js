@@ -9,6 +9,7 @@ export const CustomerList = () => {
     //useState returns an array
     //built in function/hook - useEffect - takes two arguments (function and array)
     //useEffect's purpose is to run code when state changes
+    //observing initial state
     useEffect(
         //get data from API and pull it into application state of customers
         () => {
@@ -22,7 +23,7 @@ export const CustomerList = () => {
         },
         []
     )
-
+        //useEffect observes state
     useEffect(
         () => {
             if (customers.length === 1) {
@@ -32,15 +33,17 @@ export const CustomerList = () => {
                 updateMessage(`You have ${customers.length} customers, including:`)
             }
         },
+        //array below contains what state useEffect is observing
         //run when customers changes
         [customers]
     )
     return (
-        //fragment to put chilcdren under single component
+        //fragment to put children under single component
         <>
             <div>{totalCustomerMessage}</div>
             <ul>
                 {
+                    //interpolating an html representation that maps through customers
                     customers.slice(0, 5).map(
                         //paramater captures each individual customer object as it iterates
                         (customerObject) => {
