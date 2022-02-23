@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
+import "./Tickets.css"
 
 export const TicketList = () => {
     //declare and deconstruct and array - this is a hook function that defines state
@@ -6,6 +8,9 @@ export const TicketList = () => {
     //useState takes a single arguement - the array input below
     const [tickets, updateTickets] = useState([])
     //useState returns an array
+    //This is a hook provided by the React Router DOM library that you installed. 
+    //It grants you the ability to programtically manipulate the browser URL instead of waiting for a user to click on a <Link> component.
+    const history = useHistory()
     //built in function/hook - useEffect - takes two arguments (function and array)
     //useEffect's purpose is to run code when state changes
     useEffect(
@@ -25,9 +30,12 @@ export const TicketList = () => {
 
 
     return (
-        //fragment to put chilcdren under single component
+        //fragment to put children under single component
         <>
-
+            <h1>Service Tickets</h1>
+            <div>
+                <button onClick={() => history.push("/serviceTickets/create")}>Create Ticket</button>
+            </div>
             <ul>
                 {
                     tickets.map(
@@ -36,7 +44,10 @@ export const TicketList = () => {
                             //can only return one element - so put all html elements in one
                             //don't need dollar sign to iterate in React
                             //a unique key attribute for html elements is used in React
-                            return <li key={`ticket--${ticketObject.id}`}>{ticketObject.description}</li>
+                            return <li key={`ticket--${ticketObject.id}`}>
+                                <p className={`ticket`}>
+                                    {ticketObject.emergency ? "🚑" : ""} {ticketObject.description} submitted by  and worked on by 
+                                </p></li>
                         }
                     )
                 }

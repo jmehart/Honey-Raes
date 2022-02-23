@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 
 export const EmployeeList = () => {
     //declare and deconstruct and array - this is a hook function that defines state
@@ -7,6 +8,7 @@ export const EmployeeList = () => {
     const [employees, changeEmployee] = useState([])
     const [specialties, setSpecialty] = useState("")
     //useState returns an array
+    const history = useHistory()
     //built in function/hook - useEffect - takes two arguments (function and array)
     //useEffect's purpose is to run code when state changes
     useEffect(
@@ -36,6 +38,8 @@ export const EmployeeList = () => {
     return (
         //fragment to put chilcdren under single component
         <>
+            <h1>Employees</h1>
+            <button onClick={() => history.push("/employees/create")}>Hire Employee</button>
             <div>
                 Specialties: {specialties}
             </div>
