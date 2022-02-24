@@ -48,7 +48,7 @@ export const TicketList = () => {
                             return <section className="tickets_css" key={`ticket--${ticketObject.id}`}>
                                 <div className={ticketObject.emergency ? "emergency" : "ticket"}>
                                     <div>{ticketObject.emergency ? "🚑" : ""}
-                                        <Link to={`/tickets/${ticketObject.id}`}>{ticketObject.description}</Link>
+                                        <Link to={`/serviceTickets/${ticketObject.id}`}>{ticketObject.description}</Link>
                                     </div>
                                     <div>Submitted by <b>{ticketObject.customer?.name}</b> and worked on by <b>{ticketObject.employee?.name}</b></div>
                                 </div>

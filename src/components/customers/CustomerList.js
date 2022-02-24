@@ -23,7 +23,7 @@ export const CustomerList = () => {
         },
         []
     )
-        //useEffect observes state
+    //useEffect observes state
     useEffect(
         () => {
             if (customers.length === 1) {
@@ -40,6 +40,7 @@ export const CustomerList = () => {
     return (
         //fragment to put children under single component
         <>
+            <h1>Customers</h1>
             <div>{totalCustomerMessage}</div>
             <ul>
                 {

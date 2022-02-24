@@ -20,6 +20,7 @@ export const Repairs = () => (
           return (
             <>
               <NavBar />
+              <h1>Honey Rae Repairs</h1>
               <ApplicationViews />
             </>
           );
