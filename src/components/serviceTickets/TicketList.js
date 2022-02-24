@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 import "./Tickets.css"
 
@@ -44,10 +45,14 @@ export const TicketList = () => {
                             //can only return one element - so put all html elements in one
                             //don't need dollar sign to iterate in React
                             //a unique key attribute for html elements is used in React
-                            return <li key={`ticket--${ticketObject.id}`}>
-                                <p className={`ticket`}>
-                                    {ticketObject.emergency ? "🚑" : ""} {ticketObject.description} submitted by  and worked on by 
-                                </p></li>
+                            return <section className="tickets_css" key={`ticket--${ticketObject.id}`}>
+                                <div className={ticketObject.emergency ? "emergency" : "ticket"}>
+                                    <div>{ticketObject.emergency ? "🚑" : ""}
+                                        <Link to={`/tickets/${ticketObject.id}`}>{ticketObject.description}</Link>
+                                    </div>
+                                    <div>Submitted by <b>{ticketObject.customer?.name}</b> and worked on by <b>{ticketObject.employee?.name}</b></div>
+                                </div>
+                            </section>
                         }
                     )
                 }

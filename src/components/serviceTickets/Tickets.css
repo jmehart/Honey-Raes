@@ -1,0 +1,21 @@
+.emergency {
+    background-color: lightcoral;
+    width: 100%;
+}
+
+.tickets_css {
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2px 4%;
+    border: 1px solid;
+
+    
+}   
+
+.create_ticket {
+    margin-left: 4%;
+    margin-bottom: 2%;
+    
+}
