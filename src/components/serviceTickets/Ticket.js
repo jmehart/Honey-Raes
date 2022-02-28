@@ -32,12 +32,13 @@ export const Ticket = () => {
     )
 
     // Function to invoke when an employee is chosen from <select> element
-    const assignEmployee = (evt) => {
+    const assignEmployee = (changeEvent) => {
 
         // Construct a new object to replace the existing one in the API
+        //JSON server controls the object's id so you don't need that
         const updatedTicket = {
             customerId: ticket.customerId,
-            employeeId: parseInt(evt.target.value),
+            employeeId: parseInt(changeEvent.target.value),
             description: ticket.description,
             emergency: ticket.emergency,
             dateCompleted: ticket.dateCompleted
@@ -52,7 +53,7 @@ export const Ticket = () => {
             body: JSON.stringify(updatedTicket)
         })
             .then(() => {
-                history.push("/tickets")
+                history.push("/serviceTickets")
             })
     }
 
@@ -62,12 +63,12 @@ export const Ticket = () => {
             <section className="ticket">
                 <h3 className="ticket__description">{ticket.description}</h3>
                 <div className="ticket__customer">Submitted by {ticket.customer?.name}</div>
-                <div className="ticket__employee">Assigned to
-                <select
+                <div className="ticket__employee">Assigned to 
+                <select id="employee"
                         value={ ticket.employeeId }
                         onChange={ assignEmployee }>
                         {
-                            employees.map(e => <option key={`employee--${e.id}`} value={e.id}>{e.name}</option>)
+                            employees.map(employee => <option key={`employee--${employee.id}`} value={employee.id}>{employee.name}</option>)
                         }
                     </select>
                 </div>

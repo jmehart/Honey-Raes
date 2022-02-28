@@ -1,21 +1,40 @@
 .emergency {
     background-color: rgb(240, 171, 171);
-    width: 100%;
-}
-
-.tickets_css {
-    padding: 15px 15px;
+    padding: 10px 15px 0px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 2px 4%;
     border: 1px solid;
+}
 
-    
+.tickets_css {
+    padding: 10px 15px 0px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2px 4%;
+    border: 1px solid;
 }   
 
 .create_ticket {
     margin-left: 4%;
     margin-bottom: 2%;
     
+}
+
+.delete-ticket {
+    margin-left: 4%;
+    margin-bottom: 2%;
+
+    height: 50px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+
+.serviceTickets {
+    display: flex;  
+    flex-direction: column;
+    justify-self: stretch;
 }
