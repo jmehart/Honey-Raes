@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./Employees.css"
 
 export const EmployeeList = () => {
@@ -7,7 +8,7 @@ export const EmployeeList = () => {
     //const below returns a value and function to accept the value
     //useState takes a single arguement - the array input below
     const [employees, changeEmployee] = useState([])
-    const [specialties, setSpecialty] = useState("")
+    const [employeeSpecialties, setSpecialty] = useState("")
     //useState returns an array
     const history = useHistory()
     //built in function/hook - useEffect - takes two arguments (function and array)
@@ -44,7 +45,7 @@ export const EmployeeList = () => {
                 <button onClick={() => history.push("/employees/create")}>Hire Employee</button>
             </div>
             <div>
-                Specialties: {specialties}
+                Specialties: {employeeSpecialties}
             </div>
             <ul>
                 {
@@ -54,7 +55,7 @@ export const EmployeeList = () => {
                             //can only return one element - so put all html elements in one
                             //don't need dollar sign to iterate in React
                             //a unique key attribute for html elements is used in React
-                            return <li key={`employee--${employeeObject.id}`}>{employeeObject.name}</li>
+                            return <li key={`employee--${employeeObject.id}`}><Link to={`/employees/${employeeObject.id}`}>{employeeObject.name}</Link></li>
                         }
                     )
                 }

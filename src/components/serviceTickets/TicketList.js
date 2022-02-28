@@ -17,7 +17,7 @@ export const TicketList = () => {
     useEffect(
         //get data from API and pull it into application state of tickets
         () => {
-            fetch("http://localhost:8088/serviceTickets")
+            fetch("http://localhost:8088/serviceTickets?_expand=employee&_expand=customer")
                 .then(res => res.json())
                 .then((ticketAPIData) => {
                     //you can not directly modify state in React - you always have to use the function that it provided you in useState
@@ -37,7 +37,6 @@ export const TicketList = () => {
             <div>
                 <button onClick={() => history.push("/serviceTickets/create")}>Create Ticket</button>
             </div>
-            <ul>
                 {
                     tickets.map(
                         //paramater captures each individual ticket object as it iterates
@@ -56,7 +55,6 @@ export const TicketList = () => {
                         }
                     )
                 }
-            </ul>
 
         </>
     )
